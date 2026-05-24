@@ -11,19 +11,5 @@
     "linkedin": "",
     "zenn": "",
     "qiita": ""
-  },
-  "career": [
-    {
-      "company": "楽天カード株式会社",
-      "role": "DevEx Engineer",
-      "period": "2018年 - 現在",
-      "description": ""
-    },
-    {
-      "company": "SIer",
-      "role": "Software Engineer",
-      "period": "2007年 - 2018年",
-      "description": ""
-    }
-  ]
+  }
 }
