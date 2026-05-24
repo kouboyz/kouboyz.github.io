@@ -9,12 +9,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css" />
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', system-ui, sans-serif; }
     .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
+    @keyframes tonkatsu-fall {
+      0%   { transform: translateY(-60px) rotate(0deg); opacity: 1; }
+      80%  { opacity: 1; }
+      100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
+    }
+    .tonkatsu-drop {
+      position: fixed; top: 0; pointer-events: none; z-index: 9999;
+      animation: tonkatsu-fall linear forwards;
+      user-select: none;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
@@ -44,10 +55,14 @@
         />
         <div>
           <h1 id="hero-name" class="text-3xl font-light tracking-tight mb-1"></h1>
-          <p id="hero-title" class="text-sm text-gray-400 tracking-widest uppercase mb-5"></p>
+          <p id="hero-company" class="text-sm text-gray-400 tracking-widest uppercase mb-0.5"></p>
+          <p id="hero-role" class="text-sm text-gray-400 tracking-widest uppercase mb-5"></p>
           <p id="hero-bio" class="text-gray-600 leading-relaxed max-w-xl mb-5"></p>
           <div class="flex flex-wrap items-center gap-5 text-sm text-gray-400">
             <div id="hero-links" class="contents"></div>
+            <button id="tonkatsu-btn" title="トンカツ大好き" class="text-gray-400 hover:text-gray-900 transition-colors cursor-pointer">
+              <i class="fa-solid fa-piggy-bank text-xl"></i>
+            </button>
             <button id="qr-btn" title="QRコード" class="text-gray-400 hover:text-gray-900 transition-colors cursor-pointer">
               <i class="fa-solid fa-qrcode text-xl"></i>
             </button>
@@ -101,6 +116,23 @@
   <script>
     document.getElementById('footer-year').textContent = new Date().getFullYear();
 
+    const TONKATSU_EMOJIS = ['🍱', '🥩', '🐷', '🍚'];
+    document.getElementById('tonkatsu-btn').addEventListener('click', () => {
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          const el = document.createElement('span');
+          el.className = 'tonkatsu-drop';
+          el.textContent = TONKATSU_EMOJIS[Math.floor(Math.random() * TONKATSU_EMOJIS.length)];
+          el.style.left = Math.random() * 100 + 'vw';
+          el.style.fontSize = (1.2 + Math.random() * 1.8) + 'rem';
+          el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+          el.style.animationDelay = '0s';
+          document.body.appendChild(el);
+          el.addEventListener('animationend', () => el.remove());
+        }, i * 60);
+      }
+    });
+
     function renderQrProfile(p) {
       document.getElementById('qr-name').textContent = p.nameJa || p.name;
       document.getElementById('qr-company').textContent = p.company || '';
@@ -121,7 +153,7 @@
     // icon: Font Awesome class string, or { svg: '<path d="..."/>' } for custom SVGs
     const LINK_ICONS = {
       github:   { fa: 'fa-brands fa-github' },
-      twitter:  { fa: 'fa-brands fa-x-twitter' },
+      x:        { fa: 'fa-brands fa-x-twitter' },
       linkedin: { fa: 'fa-brands fa-linkedin' },
       qiita:    { fa: 'fa-solid fa-q' },
       // Zenn は Font Awesome 未収録 → Simple Icons の SVG パスを使用
@@ -138,8 +170,8 @@
       document.getElementById('hero-name').textContent = p.nameJa
         ? `${p.nameJa} / ${p.name}`
         : p.name;
-      document.getElementById('hero-title').textContent =
-        p.company ? `${p.company} ${p.role}` : p.role;
+      document.getElementById('hero-company').textContent = p.company || '';
+      document.getElementById('hero-role').textContent = p.role || '';
       document.getElementById('hero-bio').textContent = p.bio;
 
       // Links
