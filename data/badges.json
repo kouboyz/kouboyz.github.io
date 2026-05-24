@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Project Management Professional (PMP)",
+    "issuer": "PMI",
+    "badgeUrl": "https://www.credly.com/badges/13c0beb2-8588-4c53-a2eb-ea31b1814919/public_url",
+    "imageUrl": "assets/badge-pmp.png"
+  },
+  {
+    "name": "Certified Agile Leadership I (CAL-I)",
+    "issuer": "Scrum Alliance",
+    "badgeUrl": "https://bcert.me/sryfikbyl",
+    "imageUrl": "assets/badge-cal1.png"
+  }
+]

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kosuke Matsuo</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/output.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', system-ui, sans-serif; }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
+    <div class="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="https://kouboyz.github.io/" class="text-sm font-medium tracking-widest uppercase hover:text-gray-500 transition-colors">kouboyz</a>
+      <ul class="flex gap-8 text-sm text-gray-500">
+        <li><a href="#about" class="hover:text-gray-900 transition-colors">About</a></li>
+        <li><a href="#talks" class="hover:text-gray-900 transition-colors">Talks</a></li>
+        <li><a href="#articles" class="hover:text-gray-900 transition-colors">Articles</a></li>
+        <li><a href="#badges" class="hover:text-gray-900 transition-colors">Badges</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto px-6 pt-32 pb-24 space-y-24">
+
+    <!-- Hero -->
+    <section id="about" class="fade-in">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8 mb-10">
+        <img
+          src="assets/profile.png"
+          alt="松尾 宏介"
+          class="w-28 h-28 rounded-full object-cover flex-shrink-0"
+        />
+        <div>
+          <h1 id="hero-name" class="text-3xl font-light tracking-tight mb-1"></h1>
+          <p id="hero-title" class="text-sm text-gray-400 tracking-widest uppercase mb-5"></p>
+          <p id="hero-bio" class="text-gray-600 leading-relaxed max-w-xl mb-5"></p>
+          <div class="flex flex-wrap items-center gap-5 text-sm text-gray-400">
+            <div id="hero-links" class="contents"></div>
+            <button id="qr-btn" title="QRコード" class="text-gray-400 hover:text-gray-900 transition-colors cursor-pointer">
+              <i class="fa-solid fa-qrcode text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Talks -->
+    <section id="talks" class="fade-in">
+      <p class="text-xs tracking-widest uppercase text-gray-400 mb-8">Talks</p>
+      <div id="talks-list"></div>
+    </section>
+
+    <!-- Articles -->
+    <section id="articles" class="fade-in">
+      <p class="text-xs tracking-widest uppercase text-gray-400 mb-8">Articles</p>
+      <div id="articles-list"></div>
+    </section>
+
+    <!-- Badges -->
+    <section id="badges" class="fade-in">
+      <p class="text-xs tracking-widest uppercase text-gray-400 mb-8">Certifications</p>
+      <div id="badges-list" class="flex flex-wrap gap-4"></div>
+    </section>
+
+  </main>
+
+  <!-- QR Modal -->
+  <div id="qr-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden">
+    <div class="bg-white rounded p-8 flex flex-col items-center gap-4 shadow-lg w-80">
+      <div class="flex items-center gap-4 w-full">
+        <img src="assets/profile.png" alt="松尾 宏介" class="w-14 h-14 rounded-full object-cover flex-shrink-0" />
+        <div>
+          <p id="qr-name" class="font-medium text-sm"></p>
+          <p id="qr-company" class="text-xs text-gray-400 mt-0.5"></p>
+          <p id="qr-role" class="text-xs text-gray-400"></p>
+        </div>
+      </div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://kouboyz.github.io/" alt="QRコード" class="w-48 h-48" />
+      <p class="text-xs text-gray-400">https://kouboyz.github.io/</p>
+      <button id="qr-close" class="text-xs text-gray-400 hover:text-gray-900 transition-colors cursor-pointer">閉じる</button>
+    </div>
+  </div>
+
+  <footer class="border-t border-gray-100 text-center py-8 text-xs text-gray-400">
+    &copy; <span id="footer-year"></span> Kosuke Matsuo
+  </footer>
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    function renderQrProfile(p) {
+      document.getElementById('qr-name').textContent = p.nameJa || p.name;
+      document.getElementById('qr-company').textContent = p.company || '';
+      document.getElementById('qr-role').textContent = p.role || '';
+    }
+
+    const qrModal = document.getElementById('qr-modal');
+    document.getElementById('qr-btn').addEventListener('click', () => qrModal.classList.remove('hidden'));
+    document.getElementById('qr-close').addEventListener('click', () => qrModal.classList.add('hidden'));
+    qrModal.addEventListener('click', e => { if (e.target === qrModal) qrModal.classList.add('hidden'); });
+
+    // Intersection observer for fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // icon: Font Awesome class string, or { svg: '<path d="..."/>' } for custom SVGs
+    const LINK_ICONS = {
+      github:   { fa: 'fa-brands fa-github' },
+      twitter:  { fa: 'fa-brands fa-x-twitter' },
+      linkedin: { fa: 'fa-brands fa-linkedin' },
+      qiita:    { fa: 'fa-solid fa-q' },
+      // Zenn は Font Awesome 未収録 → Simple Icons の SVG パスを使用
+      zenn: { svg: '<path d="M.264 23.771h4.984c.264 0 .498-.147.645-.352L19.614.874c.176-.293-.029-.674-.381-.674H14.28a.781.781 0 0 0-.645.352L.03 23.361c-.088.176.03.41.234.41zM19.995 23.449l-6.09-9.449c-.205-.323.029-.733.381-.733h4.7c.235 0 .44.117.557.323l5.595 9.361c.176.293-.03.674-.381.674h-4.35a.65.65 0 0 1-.557-.323z"/>' },
+    };
+
+    async function loadJSON(path) {
+      const res = await fetch(path);
+      return res.json();
+    }
+
+    function renderProfile(p) {
+      document.title = p.name;
+      document.getElementById('hero-name').textContent = p.nameJa
+        ? `${p.nameJa} / ${p.name}`
+        : p.name;
+      document.getElementById('hero-title').textContent =
+        p.company ? `${p.company} ${p.role}` : p.role;
+      document.getElementById('hero-bio').textContent = p.bio;
+
+      // Links
+      const linksEl = document.getElementById('hero-links');
+      Object.entries(p.links || {}).forEach(([key, url]) => {
+        if (!url) return;
+        const icon = LINK_ICONS[key];
+        const a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.title = key.charAt(0).toUpperCase() + key.slice(1);
+        a.className = 'text-gray-400 hover:text-gray-900 transition-colors';
+        if (icon?.fa) {
+          a.innerHTML = `<i class="${icon.fa} text-xl"></i>`;
+        } else if (icon?.svg) {
+          a.innerHTML = `<svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" aria-hidden="true">${icon.svg}</svg>`;
+        } else {
+          a.textContent = key;
+        }
+        linksEl.appendChild(a);
+      });
+
+    }
+
+    function renderTalks(talks) {
+      const el = document.getElementById('talks-list');
+      if (!talks.length) { el.innerHTML = '<p class="text-sm text-gray-400">準備中</p>'; return; }
+      talks.forEach(t => {
+        const div = document.createElement('div');
+        const linkUrl = t.slidesUrl || t.url;
+        div.className = 'border-b border-gray-100';
+        div.innerHTML = `
+          <a href="${linkUrl}" target="_blank" rel="noopener noreferrer"
+             class="block group cursor-pointer -mx-3 px-3 py-3 rounded hover:bg-red-50/50 transition-colors">
+            <p class="text-xs text-gray-400 mb-1 group-hover:text-gray-600 transition-colors">${t.date} ${t.event}</p>
+            <p class="text-sm group-hover:text-red-500 transition-colors">${t.title}</p>
+            ${t.videoUrl !== undefined ? `<p class="mt-1 inline-flex items-center gap-1 text-xs text-gray-400 border border-gray-200 rounded px-1.5 py-0.5"><i class="fa-solid fa-video"></i> 動画あり</p>` : ''}
+          </a>`;
+        el.appendChild(div);
+      });
+    }
+
+    function renderArticles(articles) {
+      const el = document.getElementById('articles-list');
+      if (!articles.length) { el.innerHTML = '<p class="text-sm text-gray-400">準備中</p>'; return; }
+      articles.forEach(a => {
+        const div = document.createElement('div');
+        div.className = 'border-b border-gray-100';
+        div.innerHTML = `
+          <a href="${a.url}" target="_blank" rel="noopener noreferrer"
+             class="block group cursor-pointer -mx-3 px-3 py-3 rounded hover:bg-red-50/50 transition-colors">
+            <p class="text-xs text-gray-400 mb-1 group-hover:text-gray-600 transition-colors">${a.date} ${a.platform}</p>
+            <p class="text-sm group-hover:text-red-500 transition-colors">${a.title}</p>
+          </a>`;
+        el.appendChild(div);
+      });
+    }
+
+    function renderBadges(badges) {
+      const el = document.getElementById('badges-list');
+      if (!badges.length) { el.innerHTML = '<p class="text-sm text-gray-400">準備中</p>'; return; }
+
+      badges.forEach(b => {
+        const imgHtml = b.imageUrl
+          ? `<img src="${b.imageUrl}" alt="${b.name}" class="w-14 h-14 object-contain" />`
+          : `<div class="w-14 h-14 border border-gray-200 flex items-center justify-center text-xs text-gray-400">badge</div>`;
+
+        const a = document.createElement('a');
+        a.href = b.badgeUrl || '#';
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.title = `${b.name} — ${b.issuer}`;
+        a.className = 'hover:opacity-70 transition-opacity';
+        a.innerHTML = imgHtml;
+        el.appendChild(a);
+      });
+    }
+
+    // Load all data
+    Promise.all([
+      loadJSON('data/profile.json'),
+      loadJSON('data/talks.json'),
+      loadJSON('data/articles.json'),
+      loadJSON('data/badges.json'),
+    ]).then(([profile, talks, articles, badges]) => {
+      renderProfile(profile);
+      renderQrProfile(profile);
+      renderTalks(talks);
+      renderArticles(articles);
+      renderBadges(badges);
+    }).catch(err => console.error('データの読み込みに失敗しました:', err));
+  </script>
+</body>
+</html>

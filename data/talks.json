@@ -1,0 +1,81 @@
+[
+  {
+    "title": "金融アジャイル×チームトポロジー 〜大規模組織で価値提供を高める実践〜",
+    "event": "Findy 金融アジャイル〜価値提供を加速させる実践知〜",
+    "date": "2026-05-21",
+    "url": "https://jp.findy-team.io/event/live/finance-agile-260521/",
+    "slidesUrl": ""
+  },
+  {
+    "title": "AIで読み解く巨大レガシー基幹システム",
+    "event": "AI Dev Day in Fukuoka",
+    "date": "2026-04-24",
+    "url": "https://azureai.connpass.com/event/382334/",
+    "slidesUrl": ""
+  },
+  {
+    "title": "GitHub Copilot導入プレイブック",
+    "event": "Findy AI Meetup in Fukuoka #5",
+    "date": "2026-04-15",
+    "url": "https://findy-inc.connpass.com/event/383906/",
+    "slidesUrl": ""
+  },
+  {
+    "title": "GitHub Copilot導入プレイブック 〜ライセンスではなく「成功する開発者体験」を配る楽天カードの挑戦〜",
+    "event": "GitHub OctoNihon Forum 春の宴スペシャル",
+    "date": "2026-03-24",
+    "url": "https://octonihon.github.io/events/2026-03-24-GitHub-OctoNihon-Forum/",
+    "slidesUrl": ""
+  },
+  {
+    "title": "レガシー環境における AIエージェントとの付き合い方",
+    "event": "Rakuten Technology Conference 2025",
+    "date": "2025-11-15",
+    "url": "https://rakuten-tech-fukuoka.connpass.com/event/369512/",
+    "slidesUrl": ""
+  },
+  {
+    "title": "チームトポロジーで考えるAI時代の開発組織と豚カツ屋",
+    "event": "D-Plus Fukuoka みんなで学び合おう！開発生産性向上のためのナレッジ共有会",
+    "date": "2025-10-02",
+    "url": "https://d-plus.connpass.com/event/369027/",
+    "slidesUrl": ""
+  },
+  {
+    "title": "荒馬を乗りこなせ！Context as Codeで始めるAI実践",
+    "event": "Findy AI Meetup in Fukuoka #2",
+    "date": "2025-09-08",
+    "url": "https://findy-inc.connpass.com/event/365777/",
+    "slidesUrl": ""
+  },
+  {
+    "title": "基幹モノレポと開発者体験の再設計 - やりすぎ依存とビルド沼",
+    "event": "Findy Team+ Award 2025",
+    "date": "2025-08-29",
+    "url": "https://jp.findy-team.io/event/live/fta2025_rakutencard/",
+    "slidesUrl": "",
+    "videoUrl": ""
+  },
+  {
+    "title": "OSS×生成AIで“やってみる”エンジニアリングのススメ",
+    "event": "AI Engineering Summit プレイベント",
+    "date": "2025-06-11",
+    "url": "https://findy-tools.connpass.com/event/356879/",
+    "slidesUrl": ""
+  },
+  {
+    "title": "楽天カード×Findyで考える、開発生産性とAIによるエンジニアの未来",
+    "event": "Rakuten Technology Conference 2024",
+    "date": "2024-11-16",
+    "url": "https://rakuten-tech-fukuoka.connpass.com/event/332069/",
+    "slidesUrl": ""
+  },
+  {
+    "title": "大規模WF開発からトランクベース開発への大脱出プラクティス",
+    "event": "Findy Team+ Award 2024",
+    "date": "2024-10-31",
+    "url": "https://jp.findy-team.io/event/archive/rakuten-card_best-practice-award_archive/",
+    "slidesUrl": "",
+    "videoUrl": ""
+  }
+]

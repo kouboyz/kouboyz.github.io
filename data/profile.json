@@ -1,0 +1,29 @@
+{
+  "name": "Kosuke Matsuo",
+  "nameJa": "松尾 宏介",
+  "company": "楽天カード株式会社",
+  "role": "エンジニア支援G マネージャー",
+  "bio": "開発者体験（Developer Experience）の向上をテーマに、ツールやプロセスの改善に取り組んでいるエンジニアです。トンカツが大好きです。",
+  "location": "Japan",
+  "links": {
+    "github": "https://github.com/kouboyz",
+    "twitter": "https://x.com/kouboyz",
+    "linkedin": "",
+    "zenn": "",
+    "qiita": ""
+  },
+  "career": [
+    {
+      "company": "楽天カード株式会社",
+      "role": "DevEx Engineer",
+      "period": "2018年 - 現在",
+      "description": ""
+    },
+    {
+      "company": "SIer",
+      "role": "Software Engineer",
+      "period": "2007年 - 2018年",
+      "description": ""
+    }
+  ]
+}
