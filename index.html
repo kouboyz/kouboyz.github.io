@@ -3,7 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kosuke Matsuo</title>
+  <title>Kosuke Matsuo | Developer Experience</title>
+  <meta name="description" content="松尾 宏介 / Kosuke Matsuo のポートフォリオ。Developer Experience、開発者体験、開発生産性、AI駆動開発、アジャイル、チームトポロジーに関する登壇・記事をまとめています。" />
+  <meta name="keywords" content="松尾宏介,Kosuke Matsuo,kouboyz,Developer Experience,DevEx,開発者体験,開発生産性,AI駆動開発,アジャイル,チームトポロジー,Engineering Manager" />
+  <meta name="author" content="Kosuke Matsuo" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://kouboyz.github.io/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kosuke Matsuo | Developer Experience" />
+  <meta property="og:description" content="Developer Experience、開発者体験、開発生産性、AI駆動開発、アジャイル、チームトポロジーに関する登壇・記事をまとめたポートフォリオです。" />
+  <meta property="og:url" content="https://kouboyz.github.io/" />
+  <meta property="og:site_name" content="Kosuke Matsuo Portfolio" />
+  <meta property="og:image" content="https://kouboyz.github.io/assets/profile.png" />
+  <meta property="og:locale" content="ja_JP" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kosuke Matsuo | Developer Experience" />
+  <meta name="twitter:description" content="Developer Experience、開発者体験、開発生産性、AI駆動開発、アジャイル、チームトポロジーに関する登壇・記事をまとめたポートフォリオです。" />
+  <meta name="twitter:image" content="https://kouboyz.github.io/assets/profile.png" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="assets/output.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,6 +29,40 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kosuke Matsuo",
+    "alternateName": [
+      "松尾 宏介",
+      "kouboyz"
+    ],
+    "url": "https://kouboyz.github.io/",
+    "image": "https://kouboyz.github.io/assets/profile.png",
+    "jobTitle": "Engineering Manager",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "楽天カード株式会社"
+    },
+    "description": "Developer Experience、開発者体験、開発生産性、AI駆動開発、アジャイル、チームトポロジーに関する登壇・記事をまとめたポートフォリオです。",
+    "knowsAbout": [
+      "Developer Experience",
+      "DevEx",
+      "開発者体験",
+      "開発生産性",
+      "AI駆動開発",
+      "アジャイル",
+      "チームトポロジー",
+      "Engineering Management",
+      "GitHub Copilot"
+    ],
+    "sameAs": [
+      "https://github.com/kouboyz",
+      "https://x.com/kouboyz"
+    ]
+  }
+  </script>
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', system-ui, sans-serif; }
@@ -166,7 +218,7 @@
     }
 
     function renderProfile(p) {
-      document.title = p.name;
+      document.title = 'Kosuke Matsuo | Developer Experience';
       document.getElementById('hero-name').textContent = p.nameJa
         ? `${p.nameJa} / ${p.name}`
         : p.name;
