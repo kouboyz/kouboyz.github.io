@@ -10,5 +10,11 @@
     "issuer": "Scrum Alliance",
     "badgeUrl": "https://bcert.me/sryfikbyl",
     "imageUrl": "assets/badge-cal1.png"
+  },
+  {
+    "name": "GitHub Foundations",
+    "issuer": "GitHub",
+    "badgeUrl": "https://learn.microsoft.com/api/credentials/share/ja-jp/kouboyz/D0B0B522E323F9DE?sharingId=725B0E6BA604BEC6",
+    "imageUrl": "https://learn.microsoft.com/en-us/media/learn/certification/badges/github-foundations.svg?branch=main"
   }
 ]
